@@ -1,7 +1,9 @@
 //Importer express
 const express = require('express');
 class Server {
-    constructor() {
+    constructor(fileController) {
+        //file controller sendes direkte ind via constructor
+        this.fileController = fileController;
         //Opretter serveren på objektet
         this.app = express();
         this.registerRoutes();
@@ -12,6 +14,7 @@ class Server {
         this.app.get('/', (req, res) => {
             res.status(200).json({message: 'Serveren kører!'});
         })
+        this.app.get('/readFile', this.fileController.readFile);
     }
     //Hvis det ikke matcher en route vi har sender vi en 404 med en fejl til routen.
     registerNotFound() {
