@@ -7,12 +7,14 @@ const RequestLogger = require('./src/logging/RequestLogger');
 
 //Vi opretter en fuld sti til filen så det ikke betyder så meget hvilken mappe vi starter ved.
 const dataFile = path.join(__dirname, 'data', 'data.txt');
+const logFile = path.join(__dirname, 'logs', 'requests.log');
 
 //årsagen til at module.exports er vigtig i hver klasse så vi kan tilgå det her.
 const fileService = new FileService(dataFile);
 const fileController = new FileController(fileService);
-const logger = new RequestLogger();
+const logger = new RequestLogger(logFile);
 const server = new Server(fileController, logger);
+
 
 //Sever starter på port 3000.
 server.start(3000);
