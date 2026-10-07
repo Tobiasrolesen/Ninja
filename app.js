@@ -1,8 +1,9 @@
-//Denne klasse opretter kun objekter og giver dem til hinanden.
+//Denne fil opretter kun objekter og giver dem til hinanden.
 const path = require('path');
 const Server = require('./src/server/Server');
 const FileService = require('./src/services/FileService');
 const FileController = require('./src/controllers/FileController');
+const RequestLogger = require('./src/logging/RequestLogger');
 
 //Vi opretter en fuld sti til filen så det ikke betyder så meget hvilken mappe vi starter ved.
 const dataFile = path.join(__dirname, 'data', 'data.txt');
@@ -10,7 +11,8 @@ const dataFile = path.join(__dirname, 'data', 'data.txt');
 //årsagen til at module.exports er vigtig i hver klasse så vi kan tilgå det her.
 const fileService = new FileService(dataFile);
 const fileController = new FileController(fileService);
-const server = new Server(fileController);
+const logger = new RequestLogger();
+const server = new Server(fileController, logger);
 
 //Sever starter på port 3000.
 server.start(3000);

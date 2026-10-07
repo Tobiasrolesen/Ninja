@@ -6,7 +6,7 @@ class FileController {
 
     //Vi laver en metode readFile med try catch
     readFile = async (req, res) => {
-        //Vi prøver at læse fejlen, ved succes sender vi 200 med content
+        //Vi prøver at læse filen, ved succes sender vi 200 med content
         try {
             const content = await this.fileService.read();
             res.status(200).json({content: content});
@@ -37,7 +37,8 @@ class FileController {
             await this.fileService.write(content);
             res.status(200).json({message: 'filen er opdateret', content: content});
 
-        } catch (error){
+        } catch (error) {
+            console.error(error);
             res.status(500).json({error: 'kunne ikke skrive til filen'})
         }
     }
