@@ -1,0 +1,29 @@
+{
+  "name": "ninja",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "clients": "node tests/simulate_clients.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tobiasrolesen/Ninja.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Tobiasrolesen/Ninja/issues"
+  },
+  "homepage": "https://github.com/Tobiasrolesen/Ninja#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
